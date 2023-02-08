@@ -13,7 +13,7 @@ def solution(babbling):
         while match!=0:
             match = 0
             for y in can:
-                if y in x and x.find(y)==0:
+                if y in x and x.find(y)==0: //x.find(y)==0은 찾은 문자열이 가장 앞에있는지 확인하는 조건이다.
                     match +=1
                     x = substr12(x,y)
             if len(x)==0:
