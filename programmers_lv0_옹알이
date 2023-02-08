@@ -1,0 +1,22 @@
+def solution(babbling):
+    def substr12(str1, str2):
+        a = str1.find(str2)
+        str1_start = str1[0:a]
+        str1_end = str1[a+len(str2):len(str1)]
+        return str1_start + str1_end
+    
+    count = 0
+    can = ['aya','ye','woo','ma']
+    
+    for x in babbling:
+        match = 4
+        while match!=0:
+            match = 0
+            for y in can:
+                if y in x and x.find(y)==0:
+                    match +=1
+                    x = substr12(x,y)
+            if len(x)==0:
+                count +=1
+                break
+    return count
