@@ -1,0 +1,15 @@
+def solution(num, total):
+    answer = []
+    sum=0
+    for x in range(-1000,1000):
+        for y in range(num):
+            sum +=x
+            x += 1
+        if sum == total:
+            x = x-num
+            for y in range(num):
+                answer.append(x)
+                x +=1
+            return answer
+        else:
+            sum=0
