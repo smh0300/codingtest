@@ -1,0 +1,33 @@
+def solution(today, terms, privacies):
+    
+    def makedict(terms):
+        a = dict()
+        for x in terms:
+            a[x.split(" ")[0]] = int(x.split(" ")[1])
+        return a
+    
+    def datechange(today, privacy):
+        today = today.split(".")
+        privacy = privacy.split(".")
+
+        year_count = int(today[0])-int(privacy[0])
+        month_count = int(today[1])-int(privacy[1])
+        date_count = int(today[2])-int(privacy[2])
+
+        total_count = year_count*12*28 + month_count*28 + date_count
+
+        return total_count
+
+    terms = makedict(terms)
+    count = []
+
+    for y,x in enumerate(privacies):
+        privacy = x.split(" ")[0]
+        plan = terms[x.split(" ")[1]]*28
+        total_count = datechange(today,privacy)
+
+        if total_count >= plan:
+            count.append(y+1)
+
+
+    return count
