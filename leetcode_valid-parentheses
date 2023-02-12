@@ -1,0 +1,51 @@
+#https://leetcode.com/problems/valid-parentheses/
+#처음에는 리스트를 이용한 슬라이싱을 사용. 하지만 메모리사용이나 시간복잡도면에서 비효율적이라고 판단
+def solution(input):
+    while ("()" in input) or ("[]" in input) or ("{}" in input):
+        if "()" in input:
+            start = input.find("()")
+            input = input[:start] + input[start+2:]
+        elif "[]" in input:
+            start = input.find("[]")
+            input = input[:start] + input[start+2:]
+        elif "{}" in input:
+            start = input.find("{}")
+            input = input[:start] + input[start+2:]
+    
+    if len(input) ==0:
+        return True
+    else:
+        return False
+
+
+print(solution(")("))
+print(solution("([]})"))
+print(solution("{()[]}"))
+
+
+#자료구조 스택을 이용한 방
+def solution2(input):
+    stash = []
+    try:
+        for x in input:
+            if x=="(":
+                stash.append(")")
+            elif x=="[":
+                stash.append("]")
+            elif x=="{":
+                stash.append("}")
+            elif x==stash[-1]:
+                stash.pop()
+            else:
+                return False
+    except:
+        return False
+
+    if len(stash)==0:
+        return True
+    else:
+        return False
+
+print(solution2(")("))
+print(solution2("([]})"))
+print(solution2("{()[]}"))
