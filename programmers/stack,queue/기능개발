@@ -1,0 +1,20 @@
+#https://school.programmers.co.kr/learn/courses/30/lessons/42586
+
+def solution(progresses, speeds):
+    progresses.reverse()
+    speeds.reverse()
+    answer = []
+    while progresses:
+        count= 0
+        for x,y in enumerate(progresses):
+            progresses[x] += speeds[x]
+            
+        while progresses and progresses[-1]>=100:
+            progresses.pop()
+            speeds.pop()
+            count+=1
+            
+        if count >=1:
+            answer.append(count)
+    
+    return answer
