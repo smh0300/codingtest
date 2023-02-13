@@ -1,0 +1,10 @@
+#https://school.programmers.co.kr/learn/courses/30/lessons/12906
+
+def solution(arr):
+    stack=[]
+    for x in arr:
+        if stack and stack[-1]==x:
+            continue
+        else:
+            stack.append(x)
+    return stack
