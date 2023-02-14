@@ -1,0 +1,15 @@
+#https://leetcode.com/problems/longest-consecutive-sequence/description/
+
+def longestConsecutive(self, nums: List[int]) -> int:
+    max = 0
+    a = {}
+    for x in nums:
+        a[x]=True
+
+    for x in nums:
+        count = 1
+        if x-1 not in a:     ## 이조건이 없을때는 n^2으로 시간복잡도 통과에 실패했으나 이거 넣으면서 통과됨
+            while x+count in a:
+                count += 1
+            if count > max:
+                max = count
