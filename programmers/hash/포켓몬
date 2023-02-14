@@ -1,0 +1,8 @@
+#https://school.programmers.co.kr/learn/courses/30/lessons/1845
+
+def solution(nums):
+    count=0
+    a=set(nums)
+    if len(a)<= len(nums)/2:answer=len(a)
+    else:answer=len(nums)/2
+    return answer
