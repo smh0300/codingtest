@@ -3,14 +3,11 @@
 def solution(participant, completion):
     a={}
     for x in participant:
-        if x in a:
-            a[x]=a[x]+1
-        else:
-            a[x]=1
+        if x in a: a[x]=a[x]+1
+        else: a[x]=1
     
     for x in completion:
-        if x in a:
-            a[x] = a[x]-1
+        if x in a: a[x] = a[x]-1
 
     answer=[k for k,v in a.items() if v==1]
     return answer[0]
