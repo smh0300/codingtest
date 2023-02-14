@@ -1,0 +1,21 @@
+#https://school.programmers.co.kr/learn/courses/30/lessons/42577#
+
+def solution(phone_book):
+    phone_book.sort(key=len)
+    phone_book_bak = phone_book.copy()
+    breakpoint, endpoint, count = len(phone_book[0]), len(phone_book[-1]), 0
+    while breakpoint <= endpoint:
+        x=[x for x in phone_book if len(x)==breakpoint]
+        count += len(x)
+        b={}
+        for a in x: b[a]=True
+
+        for c in phone_book[count:]:
+            if c[:breakpoint] in b: 
+                return False
+        breakpoint += 1
+        phone_book = phone_book_bak.copy()
+    return True
+    
+
+# list에서 문자열 길이로 정렬하는 기능(key=len)을 기억하자
