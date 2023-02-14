@@ -11,8 +11,7 @@ def solution(input, target):
         a.pop(x)
         if (target - x) in a:
             success=1
-            break
+            return True
         a[x]=x
     
-    if success==1: print('ok')
-    else: print('no')
+    return False
