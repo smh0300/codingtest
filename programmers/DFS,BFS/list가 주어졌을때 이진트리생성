@@ -1,0 +1,31 @@
+from collections import deque
+
+class node:
+  def __init__(self, val=0, left=None, right=None):
+      self.val = val
+      self.left = left
+      self.right = right
+
+def makeTree(self, input, index=1):
+  b=deque()
+  b.append([self,index])
+
+  while b:
+    self, index = b.popleft()
+    if index*2-1 <= len(input):
+        self.left = node(input[index*2-1])
+        if self.left.val:
+          b.append([self.left,index*2])
+
+
+    if index*2 <=len(input):
+       self.right = node(input[index*2])
+       if self.right.val:
+        b.append([self.right,index*2+1])
+
+
+a = node(input[0])
+input=[3,9,20,None,None,15,7]
+
+  
+makeTree(a, input)
