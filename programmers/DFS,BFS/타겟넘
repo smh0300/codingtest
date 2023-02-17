@@ -1,0 +1,50 @@
+#https://school.programmers.co.kr/learn/courses/30/lessons/43165
+
+class node:
+    def __init__(self, val=0, left=None, right=None):
+        self.val = val
+        self.left = left
+        self.right = right
+
+class BinaryTree:
+    def __init__(self, root=None):
+        self.root = root
+
+def solution(numbers,target):
+    def makeTree(self,numbers,height=1):
+        if self and self.left == None and height < len(numbers):
+            self.left = node(numbers[height])
+            self.right = node(-numbers[height])
+
+        height += 1
+
+        if self == None:
+            return 0
+
+        makeTree(self.left,numbers,height)
+        makeTree(self.right,numbers,height)
+        
+    def dfs(self, value, depth, height=1, sum=0):
+        if self == None:
+            return 0
+
+        sum += self.val
+        if height==depth:
+            lists.append(sum)
+
+        height += 1
+        dfs(self.left,value, depth, height, sum)
+        dfs(self.right, value, depth, height, sum)
+
+    
+    lists=[]
+    a=BinaryTree(node(numbers[0]))
+    makeTree(a.root,numbers)
+    dfs(a.root, target, len(numbers))
+
+    answer = 0
+    for x in lists:
+        if x==target or x-(numbers[0]*2)==target:
+            answer += 1     
+    
+    return answer
