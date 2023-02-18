@@ -1,0 +1,13 @@
+count, target=map(int, input().split(' '))
+
+cards=[x for x in map(int, input().split(' '))]
+
+
+max=0
+for x in cards:
+    for y in cards: 
+        for z in cards:
+            if (x!=y) and (y!=z) and (x!=z) and (x+y+z)<=target and abs((x+y+z) - target) < abs(max - target):
+                max = x+y+z
+
+print(max)
