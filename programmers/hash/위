@@ -1,0 +1,16 @@
+def solution(clothes):
+    a={}
+    for x in clothes:
+        s1,s2=x
+        if s2 not in a:
+            a[s2]=[s1]
+        else:
+            a[s2].append(s1)
+    answer = 1
+    for k,v in a.items():
+        answer *= (len(v)+1)
+
+    return answer-1
+    
+    
+#경우의 수에대한 이해가 있어야하는 문제. 그게 없다면 스파케티마냥 코드가 길어질 수 있다...(최초의 나)
