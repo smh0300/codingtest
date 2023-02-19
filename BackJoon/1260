@@ -1,0 +1,48 @@
+from collections import deque
+
+graph={}
+N, M, V = map(int, input().split())
+
+for i in range(1, N+1):
+    graph[i] = []
+# 야근포인트1. 주어진 시작노드와 연결된 간선이 없을경우 Key Error가 발생. 비어있는 리스트를 만들어주면 해결
+
+for x in range(M):
+    a, b = map(int, input().split())
+    graph[a].append(b)
+    graph[a].sort()
+
+    graph[b].append(a)
+    graph[b].sort()
+# 야근포인트2. input 순서대로 간선을 만들면 방문에는 문제가없으나 순서에 문제가생김. 문제에서 요구하는대로 방문하려면 append이후 sort해줘야함.
+
+
+def bfs(graph, start):
+    visited=[start]
+    queue = deque()
+    queue.append(start)
+    while queue:
+        current = queue.popleft()
+        for v in graph[current]:
+            if v not in visited:
+                visited.append(v)
+                queue.append(v)
+    return visited
+
+def dfs(graph, start, visited=[]):
+    visited.append(start)
+    for v in graph[start]:
+        if v not in visited:
+            visited = dfs(graph,v,visited)
+    return visited
+
+visit = dfs(graph,V)
+stri = ''
+for x in visit:
+    stri += str(x)+' '
+print(stri[:-1])
+visit = bfs(graph,V)
+stri = ''
+for x in visit:
+    stri += str(x)+' '
+print(stri[:-1])
