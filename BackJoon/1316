@@ -1,0 +1,19 @@
+def solution(a):
+    check=[a[0]]
+    for x in a[1:]:
+        if x not in check:
+            check.append(x)
+        elif x in check and check[-1]!=x:
+            return 0
+    return 1
+
+
+count = int(input())
+words=[]
+for x in range(count):
+    words.append(input())
+answer = 0
+for x in words:
+    answer += solution(x)
+
+print(answer)
