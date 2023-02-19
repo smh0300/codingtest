@@ -1,0 +1,12 @@
+def solution(n):
+    count, min, max =0,0,1
+    
+    while count <n:
+        max_bk = max
+        max = min + max
+        min = max_bk
+        count += 1
+    return min
+
+
+print(solution(int(input())))
