@@ -1,0 +1,20 @@
+b, n =map(int,input().split())
+a=[]
+for x in range(b):
+    a.append(int(input()))
+
+
+target=0
+count=0
+
+for x in range(len(a)):
+    if target==n:
+        break   
+    x = len(a)-1-x
+    dif = n-target
+    if (a[x] <= dif):
+        target += a[x] * (dif//a[x])
+        count += (dif//a[x])
+
+
+print(count)
