@@ -1,0 +1,54 @@
+#백준에서 처음으로 풀어본 골드문제다.(첫ㄱ...) 그래서 그런가 생각보다 재밌었고 실버단에서 생각할필요없던것들을 알게됐다.
+#이문제의 핵심은 순진한사람이 되지 말자다. 바로 R(Reverse) 명령어가 나왔을때 실제로 리스트를 Reverse하면 안된다....
+#순진하게 시키는대로 Reverse를 하면 시간초과의 늪에서 헤어나올 수 없을것이다.
+#본 문제의 핵심은 Reverse 한것과 같은 효과를 주도록 구현하는것.
+
+
+from collections import deque
+
+def solution(command, value):
+    rcount=0
+    while "RR" in command:
+        command = command.replace("RR","")  
+    command, values = deque(command), deque(value)
+    while command:
+        a = command.popleft()
+        if len(values)==0 and a=="D":
+            return "error"
+        
+        if a=='R':
+            rcount += 1
+
+        if a=='D' and rcount%2==0:
+            values.popleft()
+        elif a=='D' and rcount%2==1:
+            values.pop()
+
+    if rcount%2==0:
+        return list(values)
+    else:
+        values.reverse()
+        return list(values)
+
+
+a=int(input())
+for _ in range(a):
+    b=input()
+    c=input()
+    d=input()
+    d=d.replace("[","")
+    d=d.replace("]","")
+    d=d.replace(","," ")
+    d=list(map(int,d.split()))
+    answer=solution(b,d)
+    if answer!="error":
+        print("[",end='')
+        for y,x in enumerate(answer):
+            if y==len(answer)-1:
+                print(x,end='')
+            else:
+                print(x,end=',')
+        print("]")
+    else:
+        print('error')        
+
