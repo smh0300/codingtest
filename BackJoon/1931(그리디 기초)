@@ -1,0 +1,19 @@
+a=[]
+b=int(input())
+for x in range(b):
+    a.append(list(map(int,input().split())))
+
+a.sort(key=lambda a : (a[1], a[0]))
+
+end = 0
+count = 0
+for x,y in enumerate(a):
+    if y[0] >= end:
+        count +=1
+        end = y[1]
+
+print(count)
+
+
+
+#메모리 59204KB, 시간 4180ms 라서 맞긴했으나 개선필요
