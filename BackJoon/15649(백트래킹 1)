@@ -1,0 +1,9 @@
+from itertools import permutations
+
+a,b = map(int,input().split())
+c=[_+1 for _ in range(a)]
+
+perm = list(permutations(c,b))
+# print(perm)
+for x in perm:
+    print(str(x).replace('(','').replace(')','').replace(',',''))
