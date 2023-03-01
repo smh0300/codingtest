@@ -1,0 +1,9 @@
+from itertools import combinations
+
+a,b = map(int,input().split())
+c=[_+1 for _ in range(a)]
+
+perm = list(combinations(c,b))
+
+for x in perm:
+    print(str(x).replace('(','').replace(')','').replace(',',''))
