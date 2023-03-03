@@ -1,0 +1,22 @@
+def solution(a):
+    
+    b=[]
+
+    for y,x in enumerate(a):
+        c=[]
+        if len(x)==1:
+            b.append(x)
+            continue
+        c.append(b[y-1][0]+a[y][0])
+
+        if len(x)==2:
+            c.append(x[1]+a[y-1][0])
+            b.append(c)
+            continue
+
+        for z in range(len(x)-2):
+            c.append(max(b[y-1][z]+a[y][z+1], b[y-1][z+1]+a[y][z+1]))
+        c.append(b[y-1][-1]+a[y][-1])
+        b.append(c)
+
+    return max(b[-1])
